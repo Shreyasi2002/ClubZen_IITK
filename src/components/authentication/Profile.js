@@ -1,8 +1,13 @@
 import React from "react";
-import {GetCurrentUser, LogoutAuth} from "../../services/auth.service";
+import { GetCurrentUser, LogoutAuth } from "../../services/auth.service";
+
+import { useNavigate } from 'react-router-dom';
+
 const ProfileDisplay = () => {
+    let navigate = useNavigate();
     const logOut = () => {
         LogoutAuth();
+        navigate("/login")
       };
   const currentUser = GetCurrentUser();
   return (
@@ -20,8 +25,8 @@ const ProfileDisplay = () => {
       </p>
       <strong>Authorities:</strong>
       <ul>
-        {currentUser.roles &&
-          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+        {currentUser.role &&
+          currentUser.role.map((role, index) => <li key={index}>{role}</li>)}
           </ul>
           <button onClick={logOut}>Logout</button>
     </div>

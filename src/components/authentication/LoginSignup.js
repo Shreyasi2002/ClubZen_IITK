@@ -1,10 +1,18 @@
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
+// import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { LoginAuth } from "../../services/auth.service";
 import { isEmail } from "validator";
 import { RegisterAuth } from "../../services/auth.service";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPenClip } from "@fortawesome/free-solid-svg-icons";
+
+import { useNavigate } from 'react-router-dom';
 
 import './LoginSignup.css'
 
@@ -49,6 +57,7 @@ const vpassword = (value) => {
 };
 
 const LoginRegister = (props) => {
+    let navigate = useNavigate();
     const form = useRef();
     const checkBtn = useRef();
     const [username, setUsername] = useState("");
@@ -84,6 +93,8 @@ const LoginRegister = (props) => {
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
+                    window.location.reload(false);
+                    navigate('/login')
                 },
                 (error) => {
                     const resMessage =
@@ -99,6 +110,7 @@ const LoginRegister = (props) => {
         }
     };
     const handleLogin = (e) => {
+
         e.preventDefault();
         setMessage("");
         setLoading(true);
@@ -106,7 +118,8 @@ const LoginRegister = (props) => {
         if (checkBtn.current.context._errors.length === 0) {
             LoginAuth(username, password).then(
                 () => {
-                    props.history.push("/profile");
+                    // props.history.push("/profile");
+                    navigate("/profile")
                 },
                 (error) => {
                     const resMessage =
@@ -124,19 +137,19 @@ const LoginRegister = (props) => {
         }
     };
     return (
-        <>
+        <div className="middle-show">
             <div className="container-log">
-                <Input type="checkbox" id="flip" />
+                <input type="checkbox" id="flip" />
                 <div className="cover">
                     <div className="front">
-                        <img src="images/frontImg.jpg" alt="" />
+                        <img src="Images/login.jpg" alt="" />
                         <div className="text">
                             <span className="text-1">Every new friend is a <br /> new adventure</span>
                             <span className="text-2">Let's get connected</span>
                         </div>
                     </div>
                     <div className="back">
-                        <img className="backImg" src="images/backImg.jpg" alt="" />
+                        <img className="backImg" src="Images/signup.jpg" alt="" />
                         <div className="text">
                             <span className="text-1">Complete miles of journey <br /> with one step</span>
                             <span className="text-2">Let's get started</span>
@@ -150,8 +163,8 @@ const LoginRegister = (props) => {
                             <Form onSubmit={handleLogin} ref={form}>
                                 <div className="input-boxes">
                                     <div className="input-box">
-                                        <label htmlFor="username"><i className="fas fa-envelope" /></label>
-                                        <Input
+                                        <label htmlFor="username"><FontAwesomeIcon icon={faUser} /></label>
+                                        <input
                                             type="text"
                                             placeholder="Enter your username"
                                             name="username"
@@ -161,8 +174,8 @@ const LoginRegister = (props) => {
                                         />
                                     </div>
                                     <div className="input-box">
-                                        <label htmlFor="password"><i className="fas fa-lock" /></label>
-                                        <Input
+                                        <label htmlFor="password"><FontAwesomeIcon icon={faLock} /></label>
+                                        <input
                                             type="password"
                                             placeholder="Enter your password"
                                             name="password"
@@ -172,8 +185,15 @@ const LoginRegister = (props) => {
                                         />
                                     </div>
                                     <div className="button input-box">
-                                        <Input type="submit" value="Sumbit" />
+                                        <input type="submit" value="Login" />
                                     </div>
+                                    {message && (
+                                        <div className="input-box">
+                                            <div className="alert alert-danger" role="alert">
+                                                {message}
+                                            </div>
+                                        </div>
+                                    )}
                                     <div className="text sign-up-text">Don't have an account? <label htmlFor="flip">Sigup now</label></div>
                                 </div>
                                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
@@ -184,8 +204,8 @@ const LoginRegister = (props) => {
                             <Form onSubmit={handleRegister} ref={form}>
                                 <div className="input-boxes">
                                     <div className="input-box">
-                                        <label htmlFor="username"><i className="fas fa-user" /></label>
-                                        <Input
+                                        <label htmlFor="username"><FontAwesomeIcon icon={faUser} /></label>
+                                        <input
                                             type="text"
                                             placeholder="Enter your username"
                                             name="username"
@@ -195,8 +215,8 @@ const LoginRegister = (props) => {
                                         />
                                     </div>
                                     <div className="input-box">
-                                        <label htmlFor="fullname"><i className="fas fa-user" /></label>
-                                        <Input
+                                        <label htmlFor="fullname"><FontAwesomeIcon icon={faPenClip} /></label>
+                                        <input
                                             type="text"
                                             placeholder="Enter your full name"
                                             name="fullname"
@@ -206,8 +226,8 @@ const LoginRegister = (props) => {
                                         />
                                     </div>
                                     <div className="input-box">
-                                        <label htmlFor="email"><i className="fas fa-envelope" /></label>
-                                        <Input
+                                        <label htmlFor="email"><FontAwesomeIcon icon={faEnvelope} /></label>
+                                        <input
                                             type="text"
                                             placeholder="Enter your email"
                                             name="email"
@@ -217,8 +237,8 @@ const LoginRegister = (props) => {
                                         />
                                     </div>
                                     <div className="input-box">
-                                        <label htmlFor="password"><i className="fas fa-lock" /></label>
-                                        <Input
+                                        <label htmlFor="password"><FontAwesomeIcon icon={faLock} /></label>
+                                        <input
                                             type="password"
                                             placeholder="Enter your password"
                                             name="password"
@@ -228,8 +248,18 @@ const LoginRegister = (props) => {
                                         />
                                     </div>
                                     <div className="button input-box">
-                                        <Input type="submit" value="Sumbit" />
+                                        <input type="submit" value="Submit" />
                                     </div>
+                                    {message && (
+                                        <div className="input-box">
+                                            <div
+                                                className={successful ? "alert alert-success" : "alert alert-danger"}
+                                                role="alert"
+                                            >
+                                                {message}
+                                            </div>
+                                        </div>
+                                    )}
                                     <div className="text sign-up-text">Already have an account? <label htmlFor="flip">Login now</label></div>
                                 </div>
                                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
@@ -238,7 +268,7 @@ const LoginRegister = (props) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
