@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Shreyasi2002/ClubZen_IITK/static/css/main.69f8eba1.css",
-    "main.js": "/Shreyasi2002/ClubZen_IITK/static/js/main.71667385.js",
-    "static/js/377.8958ea6a.chunk.js": "/Shreyasi2002/ClubZen_IITK/static/js/377.8958ea6a.chunk.js",
-    "static/media/forum.jpg": "/Shreyasi2002/ClubZen_IITK/static/media/forum.51d01905c64aabcf6ea5.jpg",
-    "service-worker.js": "/Shreyasi2002/ClubZen_IITK/service-worker.js",
-    "index.html": "/Shreyasi2002/ClubZen_IITK/index.html",
-    "main.69f8eba1.css.map": "/Shreyasi2002/ClubZen_IITK/static/css/main.69f8eba1.css.map",
-    "main.71667385.js.map": "/Shreyasi2002/ClubZen_IITK/static/js/main.71667385.js.map",
-    "377.8958ea6a.chunk.js.map": "/Shreyasi2002/ClubZen_IITK/static/js/377.8958ea6a.chunk.js.map"
+    "main.css": "/ClubZen_IITK/static/css/main.48860aa4.css",
+    "main.js": "/ClubZen_IITK/static/js/main.6592d095.js",
+    "static/js/377.8958ea6a.chunk.js": "/ClubZen_IITK/static/js/377.8958ea6a.chunk.js",
+    "static/media/forum.jpg": "/ClubZen_IITK/static/media/forum.51d01905c64aabcf6ea5.jpg",
+    "service-worker.js": "/ClubZen_IITK/service-worker.js",
+    "index.html": "/ClubZen_IITK/index.html",
+    "main.48860aa4.css.map": "/ClubZen_IITK/static/css/main.48860aa4.css.map",
+    "main.6592d095.js.map": "/ClubZen_IITK/static/js/main.6592d095.js.map",
+    "377.8958ea6a.chunk.js.map": "/ClubZen_IITK/static/js/377.8958ea6a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69f8eba1.css",
-    "static/js/main.71667385.js"
+    "static/css/main.48860aa4.css",
+    "static/js/main.6592d095.js"
   ]
 }
