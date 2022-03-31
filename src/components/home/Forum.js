@@ -1,18 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
+import { GetCurrentUser } from '../../services/auth.service'
 
 import './Forum.css'
 import { StyledLink } from '../Links.styled'
 
 const Forum = () => {
+    const [currentUser, setCurrentUser] = useState(undefined);
+  useEffect(() => {
+    const user = GetCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
   return (
       <div className='background-forum'>
           &nbsp;
           <div className='bounding-box'>
             <div className='container-forum'>
-                <h6>JOIN THE DISCUSSION</h6>
-                <h4>Explore the forum and find answers to all of your questions</h4>
+                <h6>JOIN THE EVENTS</h6>
+                <h4>Explore the various events and workshops here at IIT Kanpur</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -20,10 +29,13 @@ const Forum = () => {
                   </p>
                   <br/>
             </div>
-            <StyledLink to='/forum' className='forum-button'>
-                <n>Explore Forum</n>
+            {currentUser? (<StyledLink to='/news' className='forum-button'>
+                <n>Explore Events</n>
                 <FontAwesomeIcon className='icon-button' icon={faArrowRight} />
-            </StyledLink>
+            </StyledLink>):(<StyledLink to='/login' className='forum-button'>
+                <n>Explore Events</n>
+                <FontAwesomeIcon className='icon-button' icon={faArrowRight} />
+            </StyledLink>)}
             <br/><br/><br/>
             &nbsp;
           </div>

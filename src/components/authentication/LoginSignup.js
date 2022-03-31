@@ -91,7 +91,7 @@ const LoginRegister = (props) => {
         if (checkBtn.current.context._errors.length === 0) {
             RegisterAuth(username, fullname, email, password).then(
                 (response) => {
-                    setMessage(response.data.message);
+                    setMessage("User registered successfully");
                     setSuccessful(true);
                     window.location.reload(false);
                     navigate('/login')
@@ -103,7 +103,10 @@ const LoginRegister = (props) => {
                             error.response.data.message) ||
                         error.message ||
                         error.toString();
-                    setMessage(resMessage);
+                    if(resMessage === "Network Error")
+                        setMessage(resMessage);
+                    else
+                        setMessage("Kindly recheck your credentials");
                     setSuccessful(false);
                 }
             );
@@ -117,9 +120,10 @@ const LoginRegister = (props) => {
         form.current.validateAll();
         if (checkBtn.current.context._errors.length === 0) {
             LoginAuth(username, password).then(
-                () => {
+                (response) => {
                     // props.history.push("/profile");
                     navigate("/profile")
+                    setMessage(response.data.message)
                 },
                 (error) => {
                     const resMessage =
@@ -129,7 +133,7 @@ const LoginRegister = (props) => {
                         error.message ||
                         error.toString();
                     setLoading(false);
-                    setMessage(resMessage);
+                    setMessage("Wrong Credentials");
                 }
             );
         } else {

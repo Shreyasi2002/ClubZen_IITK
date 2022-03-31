@@ -13,7 +13,7 @@ const LINKS = [
   { to: "/councils", text: "Councils" },
   { to: "/fests", text: "Festivals" },
   { to: "/clubs", text: "Clubs" },
-  { to: "/news", text: "News & Feed" },
+//   { to: "/news", text: "News & Feed" },
   { to: "/calendar", text: "Calendar" },
 ];
 
@@ -49,13 +49,13 @@ const NavsWhite = () => {
           {currentUser ? (
             <>
               <li>
-                <NavLink
-                  to="/forum"
-                  className={"/forum" === location.pathname ? "active" : ""}
-                >
-                  Forum
-                </NavLink>
-              </li>
+                  <NavLink
+                    to="/news"
+                    className={"/news" === location.pathname ? "active" : ""}
+                  >
+                    News & Events
+                  </NavLink>
+                </li>
               <li>
                 <NavLink
                   to="/profile"
@@ -95,13 +95,13 @@ const NavsWhite = () => {
           {currentUser ? (
             <>
               <li>
-                <NavLink1
-                  to="/forum"
-                  className={"/forum" === location.pathname ? "active" : ""}
-                >
-                  Forum
-                </NavLink1>
-              </li>
+                  <NavLink1
+                    to="/news"
+                    className={"/news" === location.pathname ? "active" : ""}
+                  >
+                    News & Events
+                  </NavLink1>
+                </li>
               <li>
                 <NavLink1
                   to="/profile"
